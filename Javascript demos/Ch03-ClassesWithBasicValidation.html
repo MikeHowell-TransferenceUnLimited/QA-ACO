@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+    <script>
+        /*
+          Classes allow you to classify (group) data and function together into what is effectively a template for creating objects. 
+          Classes are used in many programming languages.  
+          
+          You use the class, which you define, to create new object instances that all have the same fields and functions via the javaScript new command.
+          The data in each instance can be edited separately from the other instances.
+
+          Classes can supply validation logic to check that data values assigned to the properties/fields in the class meet specific criteria.
+          Classes also offer a constructor mechanism which allows you to create an object from the clas' definition s and load data into it at the same time,
+          using a convenient brief notation.
+
+          Classes are explcitly created and used in JavaScript when you want to create objects with the same fields and functions consistently.  
+          For one off objects or small quantities of easily reproducible objects, i.e. not too many fields/functions, use the techniques in the previous object demos.
+        */
+
+        class person {
+            #firstname; #lastname;
+
+            constructor(firstname, lastname) {
+                this.firstname = firstname;
+                this.lastname = lastname;
+            }
+
+            get firstname(){
+                return this.#firstname;
+            }
+            set firstname(fn) {
+                if (typeof(fn) !== "string"){
+                    throw new Error("First Name must be a string.");
+                }
+                if (fn.length < 3) {
+                    throw new Error("First Name too short.");
+                }
+                this.#firstname = fn;
+            }
+
+            get lastname(){
+                return this.#lastname;
+            }
+            set lastname(ln) {
+                if (typeof(ln) !== "string"){
+                    throw new Error("Last Name must be a string.");
+                }
+                if (ln.length < 3) {
+                    throw new Error("First Name too short.");
+                }
+                this.#lastname = ln;
+            }
+
+        }
+        
+        p1 = new person("Mike" ,"Howell");
+        p2 = new person("Robyn", "Thwaits");
+        p3 = new person("Robert", "Smith");
+
+        /* --- Display object where possible, not functions, dates. */
+        document.write("<br /><b>Display objects as strings</b><br />");
+        document.write(`${p1.firstname} ${p1.lastname}`);
+        document.write("<br />");
+        document.write(`${p2.firstname} ${p2.lastname}`);
+        document.write("<br />");
+        document.write(`${p3.firstname} ${p3.lastname}`);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+    <textarea id="txtArea" width="20" height="20"></textarea>
+    <br />
+    <span id="txtCount"></span>
+    <script>      
+      const txtStatus = document.getElementById("txtCount");
+
+      document.getElementById("txtArea").addEventListener("input", 
+         () => {                
+                 txtStatus.innerHTML=`<b>${txtArea.value.length}</b>`;               
+               });      
+    </script>
+</body>
+
+</html>

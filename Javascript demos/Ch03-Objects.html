@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+    <script>
+        let plane = {
+            manufacturer: "Grumman",
+            model: "F-14b Tomcat",
+            engines: 2,
+            engine_type: "TurboFan",
+            engine_status: true,
+            landing_gear_status: false,
+            pilot: "Maverick",
+            radio: "Great balls of fire",
+            lastRunDate: new Date(2022, 1, 1),
+            exhaustGasTemps: [0, 0],
+
+            startEngine: function (engineNumber) {
+                alert(`Starting engine ${engineNumber}`);
+            },
+            shutdownEngine: function stop(engineNumber) {
+                alert(`Stopping engine ${engineNumber}`);
+            }
+        };
+
+        // Accessing a field
+        document.write(`<b>Manufacturer:</b> ${plane.manufacturer}`);
+        document.write("<br />");
+
+        // Using a method
+        plane.startEngine(1);
+
+        // Scroll through keys
+        document.write("<br /><b>Keys used to extract values:</b><br />");
+        for (let key in plane) {
+            document.write(`${key} ; ${plane[key]} <br />`);
+        };
+
+        // Displaying values
+        document.write("<br /><b>Values:</b><br />");
+        // This notation doesn't work on plane objects, it isn't an array!
+        //for (let value of plane) {
+        // You have to explicitly ask for the values in an object.  You can do similar with Object.keys
+        for (let value of Object.values(plane)) {
+            document.write(`${value} <br />`);
+        };
+
+        // Extracting keys and values together
+        document.write("<br /><b>Keys and values:</b><br />");
+        for (let [key, value] of Object.entries(plane)) {
+            document.write(`${key} : ${value} <br />`);
+        };
+
+        /* --- Shallow copy object using spread operator. --- */
+        document.write("<br /><b>Produce a shallow copy and display copy</b></br>");
+        plane2 = { ...plane };
+
+        for (let [key, value] of Object.entries(plane2)) {
+            document.write(`${key} : ${value} <br />`);
+        };
+
+        document.write("<br /><b>Edit the plane's shallow copy's exhaust gas temp array and see if it changes the originals plane's array</b><br />");
+        plane2.exhaustGasTemps[0] = 400;
+        plane2.exhaustGasTemps[1] = 400;
+
+        for (let [key, value] of Object.entries(plane)) {
+            document.write(`${key} : ${value} <br />`);
+        };
+
+        /* --- Deep copy. --- */
+        // This works if you don't have functions in your object :(
+        //let plane3 = structuredClone(plane);
+
+        // So you can do this in this case:
+        // Step 1: Deep-copy only the data
+        const { startEngine, shutdownEngine, ...data } = plane;
+        let plane3 = structuredClone(data);
+        // Step 2: Reattach methods
+        plane3.startEngine = startEngine;
+        plane3.shutdownEngine = shutdownEngine;
+
+        // Change temperature array's values
+        plane3.exhaustGasTemps[0] = 500;
+        plane3.exhaustGasTemps[1] = 500;
+
+        document.write("<br /><b>Produce a deep copy, edit the temperatures and display the copy's source</b></br>");
+        for (let [key, value] of Object.entries(plane)) {
+            document.write(`${key} : ${value} <br />`);
+        };
+
+        /* --- Display object where possible, not functions, dates. */         
+        document.write("<br /><b>Display objects as strings</b><br />");
+        document.write(JSON.stringify(plane));
+        document.write("<br />");
+        document.write(JSON.stringify(plane2));        
+        document.write("<br />");
+        document.write(JSON.stringify(plane3));        
+
+    </script>
+</body>
+
+</html>

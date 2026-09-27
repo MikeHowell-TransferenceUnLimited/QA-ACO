@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+    <button id="btnClickMe">Click me and see what happens!</button>
+    <span id="idStatus" />
+    <script>
+      let count=0;
+      // Reference variable - it us used to refer to an object in memory
+      const txtStatus = document.getElementById("idStatus");
+
+      document.getElementById("btnClickMe").addEventListener("click", 
+         () => {
+                 txtStatus.innerHTML=`<strong>${count}</strong>`;
+                 count++;
+                });      
+    </script>
+</body>
+
+</html>

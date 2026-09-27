@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+    <script>
+        /*
+          Classes allow you to classify (group) data and function together into what is effectively a template for creating objects. 
+          Classes are used in many programming languages.  
+          
+          You use the class, which you define, to create new object instances that all have the same fields and functions via the javaScript new command.
+          The data in each instance can be edited separately from the other instances.
+
+          Classes can supply validation logic to check that data values assigned to the properties/fields in the class meet specific criteria.
+          Classes also offer a constructor mechanism which allows you to create an object from the clas' definition s and load data into it at the same time,
+          using a convenient brief notation.
+
+          Classes are explcitly created and used in JavaScript when you want to create objects with the same fields and functions consistently.  
+          For one off objects or small quantities of easily reproducible objects, i.e. not too many fields/functions, use the techniques in the previous object demos.
+        */
+
+        // --- Validation helpers ---
+        const assert = (cond, msg) => { if (!cond) throw new TypeError(msg); };
+        const isNonEmptyString = v => typeof v === "string" && v.trim().length > 0;
+        const isBool = v => typeof v === "boolean";
+        const isFiniteNumber = v => typeof v === "number" && Number.isFinite(v);
+        const toDate = v => (v instanceof Date ? v : new Date(v));
+        const ENGINE_TYPES = new Set(["TurboFan", "TurboJet", "Turboprop", "Piston", "Electric"]);
+
+        // --- Plane class with validation ---
+        class Plane {
+            #manufacturer; #model; #engines; #engine_type; #engine_status;
+            #landing_gear_status; #pilot; #radio; #lastRunDate; #exhaustGasTemps;
+
+            constructor(
+                manufacturer, model, engines, engine_type,
+                engine_status, landing_gear_status, pilot, radio,
+                lastRunDate, exhaustGasTemps
+            ) {
+                // Use setters so validation is centralized
+                this.manufacturer = manufacturer;
+                this.model = model;
+                this.engines = engines;
+                this.engine_type = engine_type;
+                this.engine_status = engine_status;
+                this.landing_gear_status = landing_gear_status;
+                this.pilot = pilot;
+                this.radio = radio;
+                this.lastRunDate = lastRunDate;
+                this.exhaustGasTemps = exhaustGasTemps;
+            }
+
+            // --- Getters/Setters with validation ---
+
+            get manufacturer() { return this.#manufacturer; }
+            set manufacturer(v) {
+                assert(isNonEmptyString(v), "manufacturer must be a non-empty string");
+                this.#manufacturer = v.trim();
+            }
+
+            get model() { return this.#model; }
+            set model(v) {
+                assert(isNonEmptyString(v), "model must be a non-empty string");
+                this.#model = v.trim();
+            }
+
+            get engines() { return this.#engines; }
+            set engines(v) {
+                assert(Number.isInteger(v) && v > 0, "engines must be a positive integer");
+                this.#engines = v;
+                // If EGTs already set, keep lengths consistent (optional but handy)
+                if (Array.isArray(this.#exhaustGasTemps) && this.#exhaustGasTemps.length !== v) {
+                    // Resize conservatively with zeros
+                    const next = new Array(v).fill(0);
+                    for (let i = 0; i < Math.min(v, this.#exhaustGasTemps.length); i++) next[i] = this.#exhaustGasTemps[i];
+                    this.#exhaustGasTemps = next;
+                }
+            }
+
+            get engine_type() { return this.#engine_type; }
+            set engine_type(v) {
+                assert(isNonEmptyString(v), "engine_type must be a non-empty string");
+                const t = v.trim();
+                assert(ENGINE_TYPES.has(t), `engine_type must be one of: ${[...ENGINE_TYPES].join(", ")}`);
+                this.#engine_type = t;
+            }
+
+            get engine_status() { return this.#engine_status; }
+            set engine_status(v) {
+                assert(isBool(v), "engine_status must be boolean");
+                this.#engine_status = v;
+            }
+
+            get landing_gear_status() { return this.#landing_gear_status; }
+            set landing_gear_status(v) {
+                assert(isBool(v), "landing_gear_status must be boolean");
+                this.#landing_gear_status = v;
+            }
+
+            get pilot() { return this.#pilot; }
+            set pilot(v) {
+                assert(isNonEmptyString(v), "pilot must be a non-empty string");
+                this.#pilot = v.trim();
+            }
+
+            get radio() { return this.#radio; }
+            set radio(v) {
+                assert(isNonEmptyString(v), "radio must be a non-empty string");
+                this.#radio = v.trim();
+            }
+
+            get lastRunDate() { return this.#lastRunDate; }
+            set lastRunDate(v) {
+                const d = toDate(v);
+                assert(!Number.isNaN(+d), "lastRunDate must be a valid date or date-like value");
+                this.#lastRunDate = d;
+            }
+
+            get exhaustGasTemps() {
+                // defensive copy so callers can’t mutate internals
+                return [...this.#exhaustGasTemps];
+            }
+            set exhaustGasTemps(arr) {
+                assert(Array.isArray(arr), "exhaustGasTemps must be an array of numbers");
+                assert(arr.length === this.engines,
+                    `exhaustGasTemps length (${arr.length}) must equal engines (${this.engines})`);
+                arr.forEach((n, i) => assert(isFiniteNumber(n), `exhaustGasTemps[${i}] must be a finite number`));
+                // store a copy to avoid external mutation
+                this.#exhaustGasTemps = [...arr];
+            }
+
+            // --- Methods with input validation ---
+
+            startEngine(engineNumber) {
+                assert(Number.isInteger(engineNumber) && engineNumber >= 1 && engineNumber <= this.engines,
+                    `engineNumber must be 1..${this.engines}`);
+                alert(`Starting engine ${engineNumber}`);
+                this.engine_status = true;
+            }
+
+            shutdownEngine(engineNumber) {
+                assert(Number.isInteger(engineNumber) && engineNumber >= 1 && engineNumber <= this.engines,
+                    `engineNumber must be 1..${this.engines}`);
+                alert(`Stopping engine ${engineNumber}`);
+                // If any engine is off, overall status false (simplified rule)
+                this.engine_status = false;
+            }
+
+            // Convenience: validate & construct from a plain object
+            static from(obj = {}) {
+                const {
+                    manufacturer, model, engines, engine_type,
+                    engine_status, landing_gear_status, pilot, radio,
+                    lastRunDate, exhaustGasTemps
+                } = obj;
+                return new Plane(
+                    manufacturer, model, engines, engine_type,
+                    engine_status, landing_gear_status, pilot, radio,
+                    lastRunDate, exhaustGasTemps
+                );
+            }
+
+            // Safe JSON form (no methods, private fields exposed as data)
+            toJSON() {
+                return {
+                    manufacturer: this.manufacturer,
+                    model: this.model,
+                    engines: this.engines,
+                    engine_type: this.engine_type,
+                    engine_status: this.engine_status,
+                    landing_gear_status: this.landing_gear_status,
+                    pilot: this.pilot,
+                    radio: this.radio,
+                    lastRunDate: this.lastRunDate.toISOString(),
+                    exhaustGasTemps: this.exhaustGasTemps
+                };
+            }
+
+            toObject() {
+                return {
+                    manufacturer: this.manufacturer,
+                    model: this.model,
+                    engines: this.engines,
+                    engine_type: this.engine_type,
+                    engine_status: this.engine_status,
+                    landing_gear_status: this.landing_gear_status,
+                    pilot: this.pilot,
+                    radio: this.radio,
+                    lastRunDate: this.lastRunDate,
+                    exhaustGasTemps: this.exhaustGasTemps
+                };
+            }
+
+
+            // Deep clone that preserves methods (structuredClone drops functions)
+            clone() {
+                return Plane.from(JSON.parse(JSON.stringify(this)));
+            }
+        }
+
+        // --- Example usage ---
+        const plane = new Plane(
+            "Grumman", "F-14B Tomcat", 2, "TurboFan",
+            false, false, "Maverick", "Great balls of fire",
+            new Date(2022, 1, 1),
+            [0, 0]
+        );
+        const helicopter = new Plane(
+            "Boeing", "AH-64D Apache Longbow", 2, "TurboFan",
+            false, true, "Michael 'Reaper' Collins", "Reaper 2-1 checking in.  Station time 2 hours.",
+            new Date(2024, 1, 10),
+            [425, 430]
+        );
+
+        // Will throw if you try invalid values:
+        // plane.pilot = "";                   // TypeError
+        // plane.engines = 0;                  // TypeError
+        // plane.engine_type = "RocketFairy";  // TypeError
+        // plane.exhaustGasTemps = [400];      // TypeError (length mismatch)
+
+        plane1.startEngine(1);  // validated
+
+
+        // Extracting keys and values together (yet none appear)
+        document.write("<br /><b>Keys and values plane 1:</b><br />");
+        for (let [key, value] of Object.entries(plane)) {
+            document.write(`${key} : ${value} <br />`);
+        };
+
+        // Extracting keys and values together (these are all private now, none show)
+        document.write("<br /><b>Keys and values helicopter:</b><br />");
+        for (let [key, value] of Object.entries(helicopter)) {
+            document.write(`${key} : ${value} <br />`);
+        };
+
+        // Extracting keys and values together (yet none appear)
+        document.write("<br /><b>Keys and values plane 1:</b><br />");
+        for (let [key, value] of Object.entries(plane1.toObject())) {
+            document.write(`${key} : ${value} <br />`);
+        };
+
+
+        document.write("<br /><b>Format access to the properties via the getters is allowed:</b><br />");
+        document.write(`${plane1.model} <br />`);
+
+        /* --- Display object where possible, not functions, dates. */
+        document.write("<br /><b>Display objects as strings</b><br />");
+        document.write(JSON.stringify(plane1));
+        document.write("<br />");
+        document.write(JSON.stringify(plane2));     
+    </script>
+</body>
+
+</html>

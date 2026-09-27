@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+    <script>
+        /* The basic array and how to access an item(element) using an index. Starts at index 0.  */
+        let cars = ["Skyline", "Silvia", "240z", "FTO"];
+
+        // Which element does this output?
+        document.write(cars[2] + "<br />");
+
+        // what does this do?  It isn't an error...(welcome to JavaScript)
+        document.write(cars[-1] + "<br />");
+        document.write(cars[4] + "<br />");
+        document.write ("</br>");
+
+        // Adding to the end of an array.
+        cars.push("Supra");
+        cars.push("Miata");
+
+        document.write("A list of cars: <br />");
+
+        for (let car of cars) {
+            document.write (`${car} <br />`);            
+        }
+
+        document.write("<br />A list of cars? No, this lists index/key numbers, you'll find out why later.<br />");
+
+        for (let car in cars) {
+            document.write (`${car} <br />`);            
+        }
+
+       document.write("A list of cars: <br />");
+
+        cars.forEach (function(car){
+            document.write (`${car} <br />`);            
+        });
+
+        // pop
+        let poppedCar = cars.pop();
+
+        document.write("<br />");
+        document.write (`Popped car ${poppedCar} <br />`);            
+
+        document.write("<br />They remaining list of cars: <br />");
+
+        cars.forEach (function(car){
+            document.write (`${car} <br />`);            
+        });
+
+        // Remove random item
+        cars.splice(2,1);
+
+        document.write (`<br />Remove car at index 2 using splice  <br />`);            
+
+        document.write("The remaining list of cars: <br />");
+
+        cars.forEach (function(car){
+            document.write (`${car} <br />`);            
+        });
+
+        // Mixing types
+        document.write("<br />");
+        document.write("An array of mixed types can be done too:<br />");
+
+        let mixedArray = ["Book", 2, new Date(2025,1,1), ["red", "green", "blue"]];
+
+        mixedArray.forEach (function(obj){
+            document.write (`${obj} <br />`);            
+        });         
+    </script>
+</body>
+
+</html>

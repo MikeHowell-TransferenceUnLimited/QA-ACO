@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <input type="text" id="txtHouse" />
+
+        <script>
+            txtHouse = document.getElementById("txtHouse");
+         
+            txtHouse.addEventListener("mouseover", function(){
+                this.style.backgroundColor="yellow";                
+            });
+
+            txtHouse.addEventListener("mouseleave", function(){
+                this.style.backgroundColor="white";
+            });
+        </script>
+    </body>
+</html>

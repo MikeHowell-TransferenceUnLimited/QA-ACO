@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <style>
+    .dark-mode {
+      color: white;
+      background-color: black;
+    }
+  </style>
+</head>
+
+
+<body>
+  <p>Some text</p>
+  <br />
+  <button id="btnThemeToggle">Toggle theme</button>
+  <script>
+    const btnThemeToggle = document.getElementById("btnThemeToggle");
+
+    btnThemeToggle.addEventListener("click",
+      () => {
+        document.body.classList.toggle("dark-mode");
+      });      
+  </script>
+</body>
+
+</html>

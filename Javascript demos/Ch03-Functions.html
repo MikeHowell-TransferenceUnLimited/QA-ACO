@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Functions</title>
+</head>
+
+<body>
+    <script>
+        function noParams(){
+            alert ("Hello everyone!");
+        }
+
+        function aParameter(name){
+          alert (`Hello ${name}`);
+        }
+
+        // The ... is called the spread operator, it takes a list of comma seperated value (parameters) and
+        // spreads the list into a set of elements in an array.  We will meet arrays formally a bit later.
+        // Here we step through the array, element by element, displaying the element to prove it works.
+        function multiParameters(...params){
+                for (p of params){
+                    alert (`${p}`);
+                }
+        }
+
+        // Loading a function into a variable, or so it appears.
+        // In reality, you are pointing to a function that is in memory via a variable creating a 
+        // reference.  When you use the variable as a function call, the referenced function is accessed.
+        let varFn = function(name){
+            alert ("Hello, " + name + "!");
+        };
+        
+
+        // Same concept as above, except that the function is anonymous.  This is known as arrow
+        // notation.  There will be times when you want to create a function that you want to pass
+        // over to someone else code, maybe an ordering function for a sort operation that has been
+        // written by a third part.  It may not be worth naming or creating the function formally with
+        // function becuase it is a one off usage, and so we use the simple and brief arrow notation.
+        const greetArrow = (name) => {alert ("Hello, " + name + "!");}
+
+        noParams();
+        aParameter("Robert");
+        multiParameters("Mike", "Howell", "99 Diggerey Drive");
+        varFn("Jane");
+        greetArrow("Mary");
+    </script>
+</body>
+
+</html>

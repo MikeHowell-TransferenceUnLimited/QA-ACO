@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Events Demo</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <style>
+        body {
+            font-family: system-ui, sans-serif;
+            line-height: 1.4;
+            margin: 2rem;
+        }
+
+        form {
+            max-width: 420px;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin: .5rem 0 .25rem;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: .6rem .7rem;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            transition: background-color .15s ease;
+        }
+
+        .row {
+            display: flex;
+            gap: .5rem;
+            margin-top: .75rem;
+        }
+
+        button {
+            padding: .55rem .9rem;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            background: #f7f7f7;
+            cursor: pointer;
+        }
+
+        button:hover {
+            filter: brightness(0.97);
+        }
+
+        .error {
+            margin-top: .75rem;
+            color: #b00020;
+        }
+
+        .ok {
+            margin-top: .75rem;
+            color: #0a7a3c;
+        }
+
+        .visually-hidden {
+            position: absolute;
+            left: -10000px;
+            top: auto;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Event Handlers Demo</h1>
+    <p>Moves mouse over the first box to change its background. The first box allows only digits (0–9). Submit validates
+        that it isn’t empty. Click the “Clear” button to reset.</p>
+
+    <form id="demoForm" novalidate>
+        <label for="digits">Digits only</label>
+        <input id="digits" name="digits" type="text" inputmode="numeric" autocomplete="off" />
+
+        <label for="notes">Optional notes</label>
+        <input id="notes" name="notes" type="text" autocomplete="off" />
+
+        <div class="row">
+            <button type="submit">Submit</button>
+            <button type="button" id="clearBtn">Clear</button> <!-- CLICK handler -->
+        </div>
+
+        <div id="message" class="error" role="status" aria-live="polite"></div>
+    </form>
+
+    <script>
+        // LOAD: initialize safely after everything (including CSS/images) is ready
+        window.addEventListener('load', function init() {
+            const form = document.getElementById('demoForm');
+            const digits = document.getElementById('digits');
+            const notes = document.getElementById('notes');
+            const msg = document.getElementById('message');
+            const clear = document.getElementById('clearBtn');
+
+            // Helper to show messages
+            function showMessage(text, ok = false) {
+                msg.textContent = text || '';
+                msg.className = (ok ? 'ok' : 'error');
+            }
+
+            // MOUSEOVER: change background when mouse enters; revert on mouseout.
+            digits.addEventListener('mouseover', () => {
+                digits.dataset.prevBg = digits.style.backgroundColor || '';
+                digits.style.backgroundColor = '#fff8cc'; // soft yellow
+            });
+            digits.addEventListener('mouseout', () => {
+                digits.style.backgroundColor = digits.dataset.prevBg || '';
+            });
+
+            // Optional: make it react as you move *over* the element (subtle shade by X position)
+            digits.addEventListener('mousemove', (e) => {
+                const r = digits.getBoundingClientRect();
+                const pct = Math.min(1, Math.max(0, (e.clientX - r.left) / r.width));
+                // Interpolate yellow (#fff8cc) to white based on pointer position.
+                const base = 0xFF, g = Math.round(0xF8 + (0xFF - 0xF8) * pct), b = Math.round(0xCC + (0xFF - 0xCC) * pct);
+                digits.style.backgroundColor = `rgb(${base}, ${g}, ${b})`;
+            });
+
+            // KEYDOWN: block any non-digit (allow control/navigation keys).
+            digits.addEventListener('keydown', (e) => {
+                const allowedControl = [
+                    'Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown',
+                    'Tab', 'Home', 'End', 'Enter'
+                ];
+                const isCtrlCombo = (e.ctrlKey || e.metaKey) && ['a', 'c', 'v', 'x', 'z', 'y'].includes(e.key.toLowerCase());
+
+                if (allowedControl.includes(e.key) || isCtrlCombo) return;
+
+                const isDigit = /^[0-9]$/.test(e.key);
+                // Also allow Numpad digits (e.code starts with 'Numpad' + digit)
+                const isNumpadDigit = /^Numpad[0-9]$/.test(e.code);
+
+                if (!isDigit && !isNumpadDigit) {
+                    e.preventDefault();
+                    // brief, non-intrusive hint
+                    showMessage('Digits only (0–9).', false);
+                } else {
+                    showMessage('');
+                }
+            });
+
+            // SUBMIT: validate that the digits field is not empty.
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const v = digits.value.trim();
+                if (v.length === 0) {
+                    showMessage('Please enter at least one digit in the first box.');
+                    digits.focus();
+                    return;
+                }
+                showMessage(`Thanks! You entered: ${v}`, true);
+            });
+
+            // CLICK: clear button resets state
+            clear.addEventListener('click', () => {
+                digits.value = '';
+                notes.value = '';
+                showMessage('Cleared. Enter digits again.', true);
+                digits.focus();
+            });
+
+            // Initial state
+            showMessage('Ready. Move your mouse over the first box, type digits, then submit.', true);
+        });
+    </script>
+</body>
+
+</html>

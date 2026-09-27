@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Form Validation</title>
+    <style>
+        .error {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <form method="GET" id="frmMine" action="Ch03-FormProcessor.html">
+        <input type="text" id="txtName" name="Name"></input>
+        <br />
+        <input type="text" id="txteMail" name="eMail"></input>
+        <br />
+        <textarea id="txtMessage" name="Msg"></textarea>
+        <br />
+        <input type="submit" id="btnSubmit" value="Submit" />
+    </form>
+
+    <br />
+    <span id="txtStatus" class="error"></span>
+
+    <script>
+        const txtName = document.getElementById("txtName");        
+        const txteMail = document.getElementById("txteMail");        
+        const txtMessage = document.getElementById("txtMessage");
+
+        const txtStatus = document.getElementById("txtStatus");
+        const btnSubmit = document.getElementById("btnSubmit");
+        const frm = document.getElementById("frmMine");
+
+        frm.addEventListener("submit",
+            (e) => {
+                let okay = true;
+                let error = "";             
+
+                if (txtName.value.trim().length < 5){
+                    error += "Name is too short.  Please type in at least 5 characters<br />";
+                    okay = false;
+                }
+
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (txteMail.value.trim().length < 5 || !emailRegex.test(txteMail.value.trim()))
+                {
+                    error += "Email address doesn't look like an email address and or its too short.<br />";
+                    okay = false;
+                }
+
+                if (txtMessage.value.trim().length == 0){
+                    error += "Your message is empty.<br />";
+                    okay = false;
+                }
+
+                if (!okay){
+                    txtStatus.innerHTML = error;
+                    e.preventDefault();
+                }
+                else{
+                    txtStatus.innerHTML = "";
+                }
+            });      
+    </script>
+</body>
+
+</html>
