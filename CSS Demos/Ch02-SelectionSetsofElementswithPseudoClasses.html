@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Selecting Sets of Elements with Pseudo-Classes</title>
+
+    <style>      
+        ul li-first-child {
+            background-color: red;
+        }
+
+        ul li-last-child {
+            background-color: red;
+        }
+        
+        li:nth-child(3),
+        li:nth-child(5) {
+            color: white;
+        }
+
+        li:nth-child(3n + 1) {
+            color: greenyellow;
+        }
+
+        li:nth-child(odd) {
+            background-color: darkkhaki;
+        }    
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li>Bella</li>
+        <li>Charlie</li>
+        <li>Luna</li>
+        <li>Max</li>
+        <li>Daisy</li>
+        <li>Milo</li>
+        <li>Lucy</li>
+        <li>Cooper</li>
+        <li>Bailey</li>
+        <li>Sadie</li>
+        <li>Buddy</li>
+        <li>Lola</li>
+        <li>Rocky</li>
+        <li>Maggie</li>
+        <li>Teddy</li>
+        <li>Ruby</li>
+        <li>Oliver</li>
+        <li>Poppy</li>
+        <li>Duke</li>
+        <li>Chloe</li>
+        <li>Bear</li>
+        <li>Harley</li>
+        <li>Rosie</li>
+        <li>Jack</li>
+        <li>Zeus</li>
+        <li>Nala</li>
+        <li>Winston</li>
+        <li>Penny</li>
+        <li>Riley</li>
+        <li>Scout</li>
+    </ul>
+</body>
+
+</html>

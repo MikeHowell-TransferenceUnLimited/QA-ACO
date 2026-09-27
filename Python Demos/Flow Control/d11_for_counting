@@ -1,0 +1,21 @@
+some_list = [10,20,50,60,5]
+
+# Use an index to access each item
+for i in range(0, len(some_list)):
+    if some_list[i] > 42: some_list[i] += 1
+
+# Use an index to access each item
+for i in range(0, len(some_list)):
+    print(some_list[i])
+
+# no explicit indexer
+for num in some_list:
+    print(num)
+
+# go through ?
+for (idx, num) in enumerate(some_list):
+    if num > 42: some_list[idx] += 1
+
+# no explicit indexer
+for num in some_list:
+    print(num)

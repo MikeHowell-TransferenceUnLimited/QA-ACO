@@ -1,0 +1,8 @@
+import glob
+import os
+
+home_dir = r"c:\users\mikeymikeza\documents"
+
+for file in glob.glob(os.path.join(home_dir, "*.txt")):
+    size = os.path.getsize(file)
+    print(file, size, "bytes")

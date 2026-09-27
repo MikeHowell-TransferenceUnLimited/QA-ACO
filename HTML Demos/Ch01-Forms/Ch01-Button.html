@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Button</title>
+    </head>
+    <body>
+       <!-- 
+        Buttons tend to be used with Javascript to trigger an action of some sort
+        like fetch customer data from a remote server and then display it using
+        divs/spans on the screen.  We will do that sort of task later in the Javscript
+        module.
+
+        They don't return anything as far as a form is concerned.
+    -->
+        <input type="button" id="btn1" onclick="ouch()">Don't click me!</input>
+        <br />
+        <input type="button" id="btn2" onclick="ouch()" value="Don't click me either!" />
+        <br />
+        <button><img src="Green_tick.png" width="30px" height="30px"></button>                
+        <br />
+    </body>
+    <script>
+        function ouch(){
+            alert ("You clicked me!");
+        }
+    </script>
+</html>

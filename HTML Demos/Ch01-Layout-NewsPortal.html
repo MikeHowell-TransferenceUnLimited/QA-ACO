@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>News Portal</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; font: 16px/1.4 system-ui; }
+    header, nav, section, article, footer { padding: 1rem; border: 1px solid #ddd; }
+    header { background: #144; color: #fff; }
+    nav { background: #0b2f3a; color: #fff; }
+    nav a { color: #cfe; margin-right: .75rem; }
+    main { display: grid; gap: 1rem; grid-template-columns: 1fr 1fr; padding: 1rem; }
+    section { background: #fafafa; }
+    article + article { margin-top: .75rem; }
+    footer { background: #f7f7f7; }
+    @media (max-width: 800px) { main { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>The Daily Semantic</h1>
+    <p>Clear structure. Clear stories.</p>
+  </header>
+
+  <nav aria-label="Sections">
+    <a href="#">Top</a><a href="#">World</a><a href="#">Tech</a><a href="#">Sport</a><a href="#">Culture</a>
+  </nav>
+
+  <main>
+    <section aria-labelledby="tech">
+      <h2 id="tech">Technology</h2>
+
+      <article>
+        <header><h3>New JS Engine Boosts Performance</h3></header>
+        <p>Early benchmarks show significant gains in startup and parsing times…</p>
+        <footer><small>Tech · 19 Oct 2025</small></footer>
+      </article>
+
+      <article>
+        <header><h3>CSS Container Queries in the Wild</h3></header>
+        <p>Design systems adopt container queries to simplify responsive components…</p>
+        <footer><small>Tech · 18 Oct 2025</small></footer>
+      </article>
+    </section>
+
+    <section aria-labelledby="world">
+      <h2 id="world">World</h2>
+
+      <article>
+        <header><h3>Regional Summit Focuses on Energy</h3></header>
+        <p>Leaders met to discuss infrastructure and transition roadmaps…</p>
+        <footer><small>World · 19 Oct 2025</small></footer>
+      </article>
+
+      <article>
+        <header><h3>Coastal Cities Invest in Resilience</h3></header>
+        <p>New projects target flood mitigation and transport upgrades…</p>
+        <footer><small>World · 17 Oct 2025</small></footer>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <small>© 2025 The Daily Semantic</small>
+  </footer>
+</body>
+</html>

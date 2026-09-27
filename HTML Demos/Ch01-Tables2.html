@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Tables 2</title>
+</head>
+
+<body>
+    <!--
+      Later, HTML added:
+        THEAD
+        TBODY
+        TFOOT
+      elements.  
+      
+      These are used to group the TH columns into a single unit that can be formatted 
+      together.  Such formatting could involvea multi-row-header that you want to stick to the top 
+      of the screen as you scoll the contents up and own with a mouse.
+      
+      Likewise, you can group some TD cells at the bottom to form a footer and format it with
+      a different colour/font size etc (TFOOT).
+
+      Same with the body.  None of these elements do anything out of the box, they are semantic
+      but you can assign them formatting capabilities with stylesheets.
+    -->
+
+    <h1>Basic Table</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Last name</th>
+                <th>First name</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Horatio</td>
+                <td>Rudolfo</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Splinkus</td>
+                <td>Marissa</td>
+            </tr>
+        </tbody>
+        <tr>
+            <td>3</td>
+            <td>Cufoofoo</td>
+            <td>Gregorius</td>
+        </tr>
+        <tfoot>
+            <tr>
+                <td colspan="3">
+                    My table has a foot(er).  Put your paging system here.
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</body>
+
+</html>

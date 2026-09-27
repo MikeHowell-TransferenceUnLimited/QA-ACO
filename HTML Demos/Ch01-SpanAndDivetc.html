@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Span and Div etc</title>
+</head>
+
+<body>
+    <p>
+        Petunias are cheerful flowering plants that bring vivid color to gardens and
+        window boxes throughout the summer. Their trumpet-shaped blooms come in shades
+        ranging from soft pastels to deep purples and vibrant reds. Easy to grow from
+        seed or bedding plants, they thrive in sunny spots with well-drained soil.
+        With regular watering and deadheading, petunias will reward you with continuous
+        blossoms until the first frost.
+    </p>
+    <p>
+        Nasturtiums are bright, fast-growing annuals known for their vivid orange, yellow,
+        and red blooms. Their round leaves and trailing stems make them ideal for hanging baskets
+        or garden borders. Both the flowers and leaves are edible, adding a peppery flavor to salads.
+        Thriving in poor soil and sunny conditions, nasturtiums bring effortless charm and
+        color to any garden.
+    </p>
+    <p>
+        <span id="flower">Flowers</span> are a major joy in life.
+    </p>
+    <script>
+        // Get the span by its ID
+        const flower = document.getElementById("flower");
+        // Change its text color
+        flower.style.color = "#b0b0b0";
+    </script>
+    <br />
+    This is some arbitrary text with some philosopy in it<div id="philosophy">Some philosopy</div>and then
+    a few words after.
+    <script>
+        // Get the span by its ID
+        const philosophy = document.getElementById("philosophy");
+        // Change the div's content.
+        philosophy.innerText = "Time flies like an arrow; fruit flies like a banana.";
+    </script>
+</body>
+<!--
+  <p> create a line break after the text.  The contents wraps as per the browser window/container's size.
+  
+  <div> and <span> let you "label" a section of the page.  <div> defaults to acting like a <p> as it adds
+  a line break.
+
+  <br></br> creates a line break.  You can't put text between the opening and closing element
+  as it doesnt make any sense, hence its abbreviated <br /> form is commonly used.
+  -->

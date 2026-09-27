@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Basic Form Desination</title>
+</head>
+
+<body>
+    <script>      
+        const params = new URLSearchParams(window.location.search);
+
+        // Read individual parameters
+        const userName = params.get("UN"); 
+        const password = params.get("P");  
+
+        // You can check if a parameter exists
+        if (params.has("UN")) {
+            console.log("Name is present:", userName);
+        }
+
+        // Loop through all parameters
+        for (const [key, value] of params) {
+            console.log(`${key} = ${value}`);
+        }
+
+        for (const [key, value] of params) {
+            document.write(`${key} = ${value} <br />`);
+        }
+
+    </script>
+</body>
+
+</html>

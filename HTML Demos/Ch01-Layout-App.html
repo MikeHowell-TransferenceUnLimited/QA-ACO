@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Docs Layout</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; font: 16px/1.4 system-ui; display: grid; grid-template-columns: 260px 1fr; min-height: 100vh; }
+    header, nav, section, article, footer { padding: 1rem; border: 1px solid #ddd; }
+    header { grid-column: 1 / -1; background: #f7f7f7; }
+    nav { background: #fbfbfb; }
+    main { padding: 0; }
+    section { padding: 1rem; }
+    article + article { margin-top: 1rem; }
+    footer { grid-column: 1 / -1; background: #f7f7f7; }
+    @media (max-width: 900px) { body { grid-template-columns: 1fr; } nav { order: 2; } }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Product Docs</h1>
+    <p>Learn how to build with our API</p>
+  </header>
+
+  <nav aria-label="Sidebar">
+    <strong>Getting Started</strong>
+    <ul>
+      <li><a href="#intro">Introduction</a></li>
+      <li><a href="#auth">Authentication</a></li>
+      <li><a href="#errors">Errors</a></li>
+    </ul>
+    <strong>Guides</strong>
+    <ul>
+      <li><a href="#webhooks">Webhooks</a></li>
+      <li><a href="#rate">Rate Limits</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section id="intro" aria-labelledby="intro-h">
+      <h2 id="intro-h">Introduction</h2>
+      <article>
+        <header><h3>What is the API?</h3></header>
+        <p>Our REST API lets you manage resources with predictable URLs and JSON payloads.</p>
+        <footer><small>Updated: 19 Oct 2025</small></footer>
+      </article>
+      <article>
+        <header><h3>Base URL</h3></header>
+        <p>All requests start at <code>https://api.example.com/v1</code>.</p>
+      </article>
+    </section>
+
+    <section id="auth" aria-labelledby="auth-h">
+      <h2 id="auth-h">Authentication</h2>
+      <article>
+        <header><h3>Bearer Tokens</h3></header>
+        <p>Send <code>Authorization: Bearer &lt;token&gt;</code> with each request.</p>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <small>© 2025 Example Inc. · <a href="#">Privacy</a> · <a href="#">Terms</a></small>
+  </footer>
+</body>
+</html>

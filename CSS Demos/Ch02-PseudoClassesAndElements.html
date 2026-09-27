@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Pseudo Classes and Elements</title>
+
+    <style>
+        /* Mouse button held down over interactive item */
+        :active {
+            color: blue;
+        }
+
+        /* Floating the mouse over the item */
+        input[type="text"]:hover {
+            color: red;
+            cursor: crosshair;
+        }
+
+        :focus {
+            color: blue;
+            border-width: 4px;
+        }
+
+        :link {
+            color: blue;
+        }
+
+        :visited {
+            color: orange;
+        }
+
+        p.note:before {
+            font-weight: bold;
+            content: "Note: ";
+        }
+
+        h1:before {
+            content: "Chapter " counter(chapter) ".";
+            counter-increment: chapter;
+        }
+
+        p::first-letter {
+            color: darkcyan;
+        }
+
+        p::first-line {
+            color: blue;
+        }
+
+        ::selection {
+            background-color: orange;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="http://www.microsoft.com">Microsoft's site</a>
+    <br /><br />
+    <input type="text" id="userName"></a>
+    <br /><br />
+    <p>
+        Hedgehogs are small, nocturnal mammals known for the distinctive spines that cover their backs, offering
+        protection from
+        predators. They spend their nights foraging for insects, berries, and other small treats, using their keen sense
+        of
+        smell to explore. Despite their prickly appearance, hedgehogs are gentle and curious creatures that have charmed
+        people
+        all around the world.
+    </p>
+    <br />
+    <p class="note">
+        Hedgehogs can be found throughout much of the UK, especially in gardens, hedgerows, woodlands, and parks where
+        they can forage safely at night. They prefer areas with plenty of ground cover, such as leaf piles, bushes, or
+        log stacks, which offer shelter and protection. Encouraging wildlife-friendly spaces in neighbourhoods has
+        become an important effort to help hedgehog populations thrive across towns and countryside alike.
+    </p>
+    <h1>The Count of Monty Froofroo</h1>
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Hyperlinks</title>
+</head>
+
+<body>
+    <p>
+        If you want to find out about
+        our courses, you could try
+        <a href="http://www.qa.com">
+            QA Training’s home page</a>
+        or telephone us on
+        +44 (0) 1793 696000.
+    </p>
+    <p>This is a link to another page in the site. Note how there is no protocol in front.
+        you can put a / as the first entry in the link to say start at the root(start) folder of the web site.
+        <a href="/Ch01-SimplePage.html">Simple page</a>
+    </p>
+    <p>This is a link to another page in the same site. 
+        you can put a page name directly without any prefix, the page file is assumed to be in the same folder as the current
+        page.
+        <a href="Ch01-SimplePage.html">Simple page</a>
+    </p>
+      <p>This is a link to another page in a subfolder in the same site. 
+        You can put a folder name then page name directly without any prefix, the folder is assumed to
+         be contained in the current folder.  What would happen if you put a / as a prefix to the link?
+        <a href="Ch01-Orders/Ch01-OrdersPage.html">Simple page</a>
+    </p>
+    <p>Note that we use / even on a Windows machine (which uses \ for files).  This is because
+        the notation comes from Unix, the OS on which Web servers were first imolemented.
+    </p>
+    <p>Relative notations don't work reliably at all if you are accessing your pages with the file: protocol 
+        in the URL since the browser can't work out where the root folder is.  In truth, please always
+        develop your web pages on a web server.  To work around this and you insist on using the file:
+        protocol, you must put the full path (from the root of the drive) into every link</p>
+</body>
+
+</html>

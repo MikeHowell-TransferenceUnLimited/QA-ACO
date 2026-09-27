@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<body>
+    <a href="Ch01-Layout-App.html" target="_parent">Link using _parent</a>
+    <br />
+    <a href="Ch01-Layout-App.html" target="_top">Link using _top</a>
+    <br />
+    <a href="Ch01-Layout-App.html" target="_blank">Link using _blank</a>
+    <br />
+    <a href="Ch01-Layout-App.html" target="_self">Link using _self</a>
+    <br />
+    <!--
+      These targets make sense when you have a page divided into frames i.e. pages in a page.
+      You would have a page that defined how to calve the page up into frames (subpages) and
+      allocate a web page to each frame.  Without frames, they do little other than open a new tab.
+
+      _parent replaces the current page with the new page.  This is semantic and means
+      if the page is divided up into frames, replace the entire page, frames and all.
+
+      _top replaces the current page with the new page.  _top is semantic, it implies replacing 
+      the page that defines (and links) to the various frames.  It is the same as _parent.
+
+      _blank opens up a new blank page in a new tab.
+
+      _self replaces the current page with the new page.  If you have a page in a frame,
+      it implies replacing the contents of the frame that contains the hyperlink i.e 
+      itSelf.  Without frames this replaces the current page.
+      
+
+      _x where x is the name of a frame.  This enables a link in one page, when selected, to have
+      it's content appear in another frame (the one called x).  
+
+      You might want to research the FRAME element.  It is very easy to use to divide a page up into
+      a title, menu, body, footer etc.  However, these days we use CSS to divide the page (later module)
+      rather than frames as this reacts to changing the browser size/device much better and 
+      it is easier to allow for more drastic changes like converting a vertical menu into a horizontal
+      one when displayed on a phone versus a desktop browser.
+
+      If you want to embed a page in a page, research what an IFRAME is.  This is useful when you want 
+      to interact with a web page as if it were part of your current page i.e. a report web site inside a
+      web site containing a document.
+    -->
+
+    <br />
+    Other protocols: <a href="mailto:tutor@qa.com"mail tutor</a>
+</body>

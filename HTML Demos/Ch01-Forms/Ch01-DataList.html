@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Colour Form</title>
+</head>
+
+<body>
+    <form method="GET" action="Ch01-BasicFormDestination.html">
+        <input list="browsers" />
+        <!-- 
+          Here the values are assumed to be what is displayed in the
+          drop down.  You can make the value and displayed item different
+          by using this syntax:
+               <option value="x">Display x</option> 
+        -->
+        <datalist id="browsers">
+            <option value="Internet Explorer">
+            <option value="Firefox">
+            <option value="Google Chrome">
+            <option value="Opera">
+            <option value="Safar">
+            </option>
+        </datalist>
+        <br /> <br />
+        <input list="browsers2" />
+        <datalist id="browsers2">
+            <option value="Internet Explorer">IE</option>
+            <option value="Firefox">FF</option>
+            <option value="Google Chrome">GC</option>
+            <option value="Opera">O</option>
+            <option value="Safar">S</option>
+            </option>
+        </datalist>
+    </form>
+</body>
+
+</html>

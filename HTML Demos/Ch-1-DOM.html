@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>DOM Manipulation Demo</title>
+</head>
+
+<body>
+    <h1 id="main-title">Welcome!</h1>
+
+    <div class="container">
+        <h2>Subheading</h2>
+        <p>This is a paragraph of text.</p>
+    </div>
+
+    <h3>Here is a level 3 heading</h3>
+    <h3>And another level 3 heading</h3>
+    <h3>And yet another level 3 heading</h3>
+
+    <button id="action-btn">Click Me</button>
+
+    <script>
+        // Reference elements in different ways
+        const title = document.getElementById('main-title');
+        const container = document.querySelector('.container');
+        const subheading = container.querySelector('h2');
+        const paragraph = container.querySelector('p');
+        const button = document.getElementById('action-btn');
+        const subsubheadings = document.querySelectorAll('h3');
+
+        // Manipulate the elements
+        title.style.color = 'blue';
+        // textContent versus innerText ignores any styles applied to the element.  It renders
+        // more quickly, but is more for diagnostic output purposes than practical ones.
+        subheading.textContent = 'This text was changed with JavaScript!';
+        paragraph.style.fontStyle = 'italic';
+        subsubheadings.forEach (h => {h.style.color = "magenta";});
+
+        // Add interactivity
+        button.addEventListener('click', () => {
+            paragraph.textContent = 'You clicked the button and changed me again!';
+            button.textContent = 'Clicked!';
+            button.style.backgroundColor = 'lightgreen';
+        });
+    </script>
+</body>
+
+</html>

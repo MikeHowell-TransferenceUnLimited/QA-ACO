@@ -1,0 +1,4 @@
+*.pptx
+*.docx
+*.zip
+!HTML_Labs_export.zip

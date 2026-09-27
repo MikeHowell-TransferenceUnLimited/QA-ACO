@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Select All Tags of a Particular Type</title>
+
+    <style>
+        ol {
+            counter-reset: section;
+            /* Creates new instance of section counter for each new ol element */
+            list-style-type: none;
+        }
+
+        li::before {
+            counter-increment: section;
+            /* Increments only this instance */
+            content: counters(section, ". ") " ";
+        }
+    </style>
+</head>
+
+<body>
+    <ol>
+        <li>First</li>
+        <li>Second
+            <ol>
+                <li>Second A</li>
+                <li>Second B</li>
+                <li>Third</li>
+                <ol>
+                    <li>Third A</li>
+                    <li>Third B</li>
+                </ol>
+            </ol>
+        </li>
+        <li>Third</li>
+    </ol>
+</body>
+
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Colour Form</title>
+</head>
+
+<body>
+    <!--
+       Provides a slider for you to select a value.
+       A teensy weensy amount of JavaScript is needed if you
+       want to show the pointer's position as a number:
+    -->
+    <form method="GET" action="Ch01-BasicFormDestination.html">
+        How many eggs do you want?
+        <input type="range" min="1" max="10" name="howManyEggs"
+           oninput="eggCount.value = this.value" />
+        <output id="eggCount">50</output>
+        <br /><br />
+        <input type="Submit" value="Submit" />
+    </form>
+</body>
+
+</html>

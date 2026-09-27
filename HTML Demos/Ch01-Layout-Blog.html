@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Blog Layout</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; font: 16px/1.4 system-ui; }
+    header, nav, section, article, footer { padding: 1rem; border: 1px solid #ddd; }
+    header { background: #f7f7f7; }
+    nav { background: #fafafa; }
+    main { max-width: 800px; margin: 0 auto; display: block; }
+    article + article { margin-top: 1rem; }
+    footer { background: #f7f7f7; margin-top: 2rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>My Blog</h1>
+    <p>Thoughts, tutorials, and updates</p>
+  </header>
+
+  <nav aria-label="Primary">
+    <a href="#">Home</a> · <a href="#">Posts</a> · <a href="#">About</a> · <a href="#">Contact</a>
+  </nav>
+
+  <main>
+    <section aria-labelledby="latest">
+      <h2 id="latest">Latest Posts</h2>
+
+      <article>
+        <header><h3>Understanding Flexbox</h3></header>
+        <p>Flexbox makes 1D layout straightforward. Let’s explore the main axis vs cross axis…</p>
+        <footer><small>Posted 19 Oct 2025 · 6 min read</small></footer>
+      </article>
+
+      <article>
+        <header><h3>State in React: useReducer vs useState</h3></header>
+        <p>When your component grows, reducers can simplify updates and testing…</p>
+        <footer><small>Posted 16 Oct 2025 · 8 min read</small></footer>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <small>© 2025 My Blog · All rights reserved</small>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Tables 1</title>
+</head>
+
+<body>
+    <!--
+      This demos the basic table elements: TABLE, TR (table row), TH (table header) 
+      and TD (table data).  These are combined together to represent rows, header cells
+      and columns.  The browser works out the number of cells per row based on your
+      consistent usage (i.e. number) of TH and TD elements.  If you use the wrong number
+      of TH or TD per row, the results can be "hilariously" misaligned text all over the browser
+      window.
+
+      Note the border attribute is a quick way to put a border around the table.  
+      I have used this for convenience.  In practice, apply a stylesheet to achive the same.
+      The <center> element is the same, consider if defunct but I wanted to avoid stylesheets
+      at this time (discussed in the next module).
+
+      In the "old days", we would use borderless tables as a way to place and align items on the page, 
+      a large left aligned cell for the menu, a wide cell containing the data, a bottom shallow 
+      cell containing the footer of the page etc.  Folk still do this because it is easy or you are
+      working with legacy code, but please rather use stylesheets instead.
+      
+      Tables are meant to draw table as you would in Word or Powerpoint.
+    -->
+
+    <h1>Basic Table</h1>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Last name</th>
+            <th>First name</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>Horatio</td>
+            <td>Rudolfo</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Splinkus</td>
+            <td>Marissa</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Cufoofoo</td>
+            <td>Gregorius</td>
+        </tr>
+    </table>
+    <br /><br />
+    <h2>Malformed missing cell</h2>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Last name</th>
+            <th>First name</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>Horatio</td>
+            <td>Rudolfo</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <!-- <td>Splinkus</td> -->
+            <td>Marissa</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Cufoofoo</td>
+            <td>Gregorius</td>
+        </tr>
+    </table>
+    <h2>Intentional missing cell</h2>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Last name</th>
+            <th>First name</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>Horatio</td>
+            <td>Rudolfo</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <!-- <td>Splinkus</td> -->
+            <td colspan="2">
+                <center>Marissa</center>
+            </td>
+        </tr> 
+        <tr>
+            <td>3</td>
+            <td>Cufoofoo</td>
+            <td>Gregorius</td>
+        </tr>
+    </table>
+</body>
+
+</html>
