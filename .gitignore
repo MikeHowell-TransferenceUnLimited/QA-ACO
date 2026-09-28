@@ -2,3 +2,4 @@
 *.docx
 *.zip
 !HTML_Labs_export.zip
+node_modules/
