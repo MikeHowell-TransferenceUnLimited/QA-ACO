@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        form {
+            display: flex;
+            flex-direction: column;
+            row-gap: 15px; /* spacing between form rows */
+        }
+
+        .form-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .form-row label {
+            width: 120px;
+            text-align: right;
+        }
+
+        .form-row input {
+            flex: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <form>
+        <div class="form-row">
+            <label for="name">Name:</label>
+            <input id="name" type="text">
+        </div>
+
+        <div class="form-row">
+            <label for="email">Email:</label>
+            <input id="email" type="email">
+        </div>
+
+        <button type="submit">Submit</button>
+    </form>
+</body>
+
+</html>

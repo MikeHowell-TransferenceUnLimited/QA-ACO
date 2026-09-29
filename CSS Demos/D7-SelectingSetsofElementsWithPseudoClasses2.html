@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Selecting Sets of Elements with Pseudo-Classes</title>
+
+    <style>
+        ul {
+            background-color: white;
+        }
+
+        ul:first-child:last-child {
+            background-color: red;
+        }
+
+        article:first-of-type {
+            color: brown;
+        }
+
+        p:last-of-type {
+            background-color: paleturquoise;
+        }
+
+        input:not([type=checkbox]):not([type=radio]) {
+            display: block;
+            width: 16em;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li>Bella</li>
+        <li>Charlie</li>
+        <li>Luna</li>
+        <li>Max</li>
+        <li>Daisy</li>
+        <li>Milo</li>
+        <li>Lucy</li>
+        <li>Cooper</li>
+    </ul>
+    <p>
+        CGA graphics, introduced by IBM in the early 1980s, marked one of the first steps toward bringing color visuals
+        to personal computers. Although limited to a small palette of bold and sometimes unusual colors, it provided a
+        foundation for early PC gaming and digital art. Despite its simplicity by modern standards, CGA remains an
+        iconic milestone in the evolution of computer graphics.
+    </p>
+    <p>
+        The Hercules graphics standard was known for its crisp monochrome display, offering sharp text and higher
+        resolution graphics than competing options of its time. Originally designed for business applications, it became
+        popular among early PC users who valued clarity over color. Even without vibrant visuals, Hercules played a
+        significant role in shaping the early personal computing landscape.
+    </p>
+    <br /> <br />
+    First name:<input type="text" id="firstName"></input>
+    Last name:<input type="text" id="lastName"></input>
+    Remember me<input type="checkbox" id="remember" />
+    <br />
+    <input type="radio" name="colour">Red</input>
+    <input type="radio" name="colour">Yellow</input>
+    <input type="radio" name="colour">Green</input>
+    <br>
+    <article>
+        <p>Bananas may have been the first fruit of the day, but do ask what today's fruit is?</p>
+    </article>
+    <article>
+        Oranges and lemons,” say the bells of St Clement’s.<br />
+        “You owe me five farthings,” say the bells of St Martin’s.<br />
+        “When will you pay me?” say the bells of Old Bailey.<br />
+        “When I grow rich,” say the bells of Shoreditch.<br />
+    </article>
+    <br>
+    <p>
+        And what do we have here?
+    </p>
+</body>
+
+</html>

@@ -1,0 +1,91 @@
+<html>
+
+<head>
+    <style>
+        .row {
+            display: flex;
+        }
+
+        .sidebar {
+            /* flex: <flex-grow> <flex-shrink> <flex-basis>; */
+            /* 1 means allow the sidebar to grow.
+               0 means it is not allowed to shrink below 15%, main content shrinks first.                
+               0 0 15 % would stop the sidebar from growing. */
+            flex: 1 0 15%;
+            /* fixed at 25% */
+            background-color: bisque;
+        }
+
+        .content {
+            /* The flex 10 for the content means the ratio 1:10 is kept.
+            
+               It stands for flex-grow:10, flex-shrink:1, flex-basis: 0
+
+               This means item can take 10 fractions of space (it's large)
+               Its allowed to shrink.
+               It starts at zero width but will grab whatever space if it offered when fitting the content displayed.
+            */
+            flex: 10;
+            background-color: cornsilk;
+        }
+
+        .sidebar img {
+            width: 100%;
+            /* takes the width of the sidebar */
+            height: auto;
+            /* keeps aspect ratio */
+            max-width: 220px;
+            /* <-- cap the size so it's never too big */
+            display: block;
+            /* removes inline-gap issues, forces an element to use the full width */
+            margin: 1rem auto;
+            /* centers it inside the sidebar */            
+            border-radius: 12px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="row">
+        <div class="sidebar">
+            Sidebar
+            <img src="images/DuesenbergFlyingLady.png" />
+        </div>
+        <div class="content">
+            <h1>Title for content</h1>
+            <p>
+                Duesenberg began in the early 1900s with brothers Fred and August Duesenberg, talented self-taught
+                engineers who
+                first made their mark building racing engines and high-performance automobiles.
+                Their early company, the Duesenberg Motor Company, supplied engines for race cars, boats,
+                and even aircraft engines during World War I. By the 1920s, they were known for engineering excellence,
+                particularly in American open-wheel racing. This racing background gave the Duesenberg name a reputation
+                for speed,
+                innovation, and resilience. Their victories in events like the Indianapolis 500 helped establish the
+                brand as a
+                symbol of elite automotive engineering.
+            </p>
+            <p>
+                The turning point came in 1926 when E.L. Cord purchased Duesenberg and set out to build the finest
+                American luxury car ever produced. Under Cord's direction, the brothers designed what became the
+                Duesenberg Model J, unveiled in 1928 and immediately recognized as one of the most advanced and
+                luxurious cars in the world. It featured cutting-edge performance, with a straight-eight engine capable
+                of speeds far beyond its competitors. Wealthy buyers could commission custom bodies from top
+                coachbuilders, making each Model J unique. The car quickly became a status symbol for the wealthy,
+                Hollywood stars, and royalty.
+            </p>
+            <p>
+                Despite its excellence, the Great Depression severely reduced the market for ultra-luxury vehicles, and
+                Duesenberg struggled financially during the 1930s. The company attempted to stay relevant with even more
+                advanced versions of the Model J, including the supercharged SJ and JN variants, which pushed the
+                boundaries of performance at the time. However, as Cord’s empire weakened, Duesenberg production slowed
+                and eventually ceased in 1937. Even so, the brand’s legacy of engineering brilliance endured, and
+                surviving cars became some of the most valuable collector vehicles in the world. Today, a Duesenberg
+                remains a symbol of American craftsmanship, innovation, and prewar luxury engineering at its peak.
+            </p>
+
+        </div>
+    </div>
+</body>
+
+</html>

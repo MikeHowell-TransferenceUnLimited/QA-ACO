@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  .container {
+    display: flex;
+    gap: 6px;
+    padding: 6px;
+    border: 1px solid #000;
+  }
+
+  .box {
+    width: 50px;
+    height: 50px;
+    background: #ddd;
+    border: 1px solid #999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+  }
+
+  /* --- WIDE SCREEN ----------------------------------- */
+  /* flex-direction: row; flex-wrap: nowrap; justify-content: space-between */
+  @media (min-width: 801px) {
+    .container {
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content:space-between;
+    }
+  }
+
+  /* --- MEDIUM SCREEN --------------------------------- */
+  /* flex-flow shorthand: column wrap; justify-content: center */
+  @media (max-width: 800px) and (min-width: 501px) {
+    .container {
+      flex-flow: column wrap; /* === flex-direction + flex-wrap */
+      justify-content: center;
+      height: 200px; /* so wrapping can be seen */
+    }
+  }
+
+  /* --- SMALL SCREEN ----------------------------------- */
+  /* flex-direction: row; flex-wrap: wrap; justify-content: flex-start */
+  @media (max-width: 500px) {
+    .container {
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+    }
+  }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <div class="box">1</div>
+  <div class="box">2</div>
+  <div class="box">3</div>
+  <div class="box">4</div>
+  <div class="box">5</div>
+</div>
+
+<p>Resize the browser to see:</p>
+<ul>
+  <li><strong>Wide:</strong> row + no wrap + space-between</li>
+  <li><strong>Medium:</strong> column wrap (via flex-flow) + centered</li>
+  <li><strong>Small:</strong> row wrap + flex-start</li>
+</ul>
+
+</body>
+</html>

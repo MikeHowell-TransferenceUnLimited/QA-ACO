@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Flex App Layout Demo</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: system-ui, Arial, sans-serif;
+        }
+
+        .app {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            /* full viewport height */
+        }
+
+        header,
+        footer {
+            padding: 12px 16px;
+            background: #222;
+            color: white;
+        }
+
+        .main {
+            flex: 1;
+            /* take remaining height */
+            overflow-y: auto;
+            /* only this area scrolls */
+            padding: 16px;
+            background: #f5f5f5;
+        }
+
+        .card {
+            background: white;
+            padding: 12px;
+            margin-bottom: 12px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, .1);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="app">
+        <header>
+            <strong>Header</strong> (stays fixed)
+        </header>
+
+        <main class="main">
+            <h1>Scrollable Main Area</h1>
+            <p>Scroll this area — header and footer won’t move.</p>
+
+            <!-- lots of content to force scroll -->
+            <div class="card">Item 1</div>
+            <div class="card">Item 2</div>
+            <div class="card">Item 3</div>
+            <div class="card">Item 4</div>
+            <div class="card">Item 5</div>
+            <div class="card">Item 6</div>
+            <div class="card">Item 7</div>
+            <div class="card">Item 8</div>
+            <div class="card">Item 9</div>
+            <div class="card">Item 10</div>
+            <div class="card">Item 11</div>
+            <div class="card">Item 12</div>
+            <div class="card">Item 13</div>
+            <div class="card">Item 14</div>
+            <div class="card">Item 15</div>
+            <div class="card">Item 16</div>
+            <div class="card">Item 17</div>
+            <div class="card">Item 18</div>
+            <div class="card">Item 19</div>
+            <div class="card">Item 20</div>
+        </main>
+
+        <footer>
+            Footer (stays fixed)
+        </footer>
+    </div>
+</body>
+
+</html>

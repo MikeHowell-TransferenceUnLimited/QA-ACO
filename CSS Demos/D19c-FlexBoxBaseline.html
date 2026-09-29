@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Flexbox Baseline Demo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    .container {
+      display: flex;
+      align-items: baseline;      /* 👈 key property */
+      gap: 20px;
+      border: 1px solid #ccc;
+      padding: 20px;
+      margin-top: 20px;
+      position: relative;
+    }
+
+    /* Just a visual guide to show where (roughly) the baseline is */
+    .container::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      border-top: 1px dashed #666;
+      /* Adjust this if you want to tweak where the guide appears */
+      top: 55px;
+      pointer-events: none;
+    }
+
+    .box1, .box2 {
+      padding: 10px;
+      background: #f2f2f2;
+      border: 1px solid #aaa;
+    }
+
+    .box1 {
+      font-size: 30px;
+    }
+
+    .box2 {
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Flexbox Baseline Alignment Example</h1>
+  <p>
+    The two boxes below are flex items with different font sizes.
+    The container uses <code>align-items: baseline</code>, so their text baselines line up.
+  </p>
+
+  <div class="container">
+    <div class="box1">Big Text</div>
+    <div class="box2">Small Text</div>
+  </div>
+
+  <p>
+    The dashed line inside the container is a rough visual guide for the shared baseline.
+  </p>
+</body>
+</html>

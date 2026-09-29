@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        .absoluteTop {
+            left: 0px;
+            top: 0px;
+            position: absolute;
+        }
+
+         .relativeTop {
+            left: 2em;
+            top: 2em;
+            position: relative;
+        }
+
+        .footer-bar {
+            position: fixed;
+            bottom: 0;
+            /* stick to bottom */
+            left: 0;
+            /* stretch from the left */
+            right: 0;
+            /* to the right */
+            padding: 10px;
+            background: #333;
+            color: white;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+   <!-- <span style="left:0em;top:0em;position:absolute;"> -->
+        <span class="absoluteTop">Some content</span>
+        <span class="relativeTop">More content</span>
+    <!--</span>-->
+    <br />
+    <div class="box">Some content</div>
+    <span class="footer-bar">Mike was here</span>
+</body>
+
+</html>

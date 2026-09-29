@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Embedded Style</title>
+
+    <style>
+        h1 {font-size: 15pt; font-weight: bold;font:Helvetica}
+        p {font:bold italic 12pt/20pt times, serif}
+        /*
+          The above is the same as:
+            font-style: italic;
+            font-weight: bold;
+            font-size : 12pt;
+            line-height: 20pt;
+            font-family: "Times", serif;
+
+            The x/y means font size/line height
+        */
+    </style>
+</head>
+
+<body>
+    <h1>A Heading 1</h1>
+
+    <p style="margin-left:1in; margin-right: 1in; line-height:200%; color: blue;">
+        This text will be shown with a one-inch left and right margin and double spaced.
+    </p>
+    <p>
+        This text is formatted as normal for &lt;p&gt; tags.
+    </p>
+</body>
+
+</html>

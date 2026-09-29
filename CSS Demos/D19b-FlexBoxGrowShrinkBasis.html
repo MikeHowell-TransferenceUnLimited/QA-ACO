@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        .container {
+            display: flex;
+            width: 100%;
+            /* now it tracks the browser width */
+            gap: 10px;
+            background: #eee;
+            padding: 10px;
+            box-sizing: border-box;
+            /* include padding in the width */
+        }
+
+        .box {
+            background: #ddd;
+            padding: 10px;
+            text-align: center;
+            font-family: sans-serif;
+        }
+
+        /* Box behaviors */
+        .a {
+            flex: 1 1 100px;
+        }
+
+        /* grow:2, shrink:1, basis:100px */
+        .b {
+            flex: 2 1 100px;
+        }
+
+        /* grow:2, shrink:1, basis:100px */
+        .c {
+            flex: 0 1 200px;
+        }
+
+        /* grow:0, shrink:1, basis:200px */
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="box a">A<br>flex: 1 1 100px</div>
+        <div class="box b">B<br>flex: 2 1 100px</div>
+        <div class="box c">C<br>flex: 0 1 200px</div>
+    </div>
+
+</body>
+
+</html>

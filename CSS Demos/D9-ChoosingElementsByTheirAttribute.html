@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Select All Tags Based on ID or Class</title>
+
+    <style>
+        /* = exact attribute match. */
+        a[href="http://www.qa.com"] {
+            color: blue;
+        }
+
+        /* ^= finds attributes that start with text. */
+        a[href^="https:"] {
+            color: orange;
+        }
+
+        /* $= find attribute value that ends with. */
+        [src$=".png"] {
+            background-color: red;
+            border: 2pt solid blueviolet;
+        }
+
+        /* *= contains the value somewhere. */
+        [id*="error"] {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="http://www.qa.com">QA's site</a>
+    </br />
+    <a href="https://www.qa.com">QA's site</a>
+    <br />
+    <img src="Layout1.png" />
+    <br />
+    <span id="errorFileNotFound">Couldn't find the file you requested</span>
+</body>
+
+</html>
