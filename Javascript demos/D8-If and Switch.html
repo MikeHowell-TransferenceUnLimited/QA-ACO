@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>If and Switch</title>
+</head>
+
+<body>
+    <script>
+        let department = "Sales";
+
+        if (department == "Sales") {
+            console.log("Sales department selected")
+        }
+        else {
+            console.log("Some other department selected")
+        }
+
+        /* There isn't a elseif statement, you have to write any such
+           construct as separate if and else clause (the old fashioned way:) */
+
+        let colourCode = 2;
+        let colour;
+
+        switch (colourCode) {
+            case 1: 
+                colour = "Red";
+                break            
+            case 2: 
+                colour = "Green";
+                break;
+            case 3: 
+                colour = "Orange"; 
+                break
+            default: 
+                    colour = "Unknown new colour";                
+        }
+
+        console.log (`Colour ${colour}`);
+
+
+    </script>
+</body>
+
+</html>

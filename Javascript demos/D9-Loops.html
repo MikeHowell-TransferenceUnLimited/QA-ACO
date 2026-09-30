@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Loops</title>
+</head>
+
+<body>
+    <script>
+        document.writeln("For loop: <br />");
+        for (let i = 0; i <= 5; i++) {
+            document.writeln(i + "<br />");
+        }
+
+        document.writeln("While loop: <br />");
+        i = 0;
+        while (i <= 5) {
+            document.writeln(i + "<br />");
+            i++;
+        }
+
+        document.writeln("Do loop: <br />");
+        i = 0;
+        do {
+            document.writeln(i + "<br />");
+            i++;
+        } while (i <= 5);
+
+        document.write ("<br />");
+
+        // Loops applied to lists
+        let item;
+        items=["Mike", "James", "Peter", "Rene"]
+        // This loop returns the index/keys for each item...not quite what we want
+        for (item in items){
+            document.writeln (item);
+        }
+
+        document.write ("<br />");
+
+        for (i in items){
+            document.writeln (`key ${i} value=${items[i]} <br />`);
+        }
+
+        document.write ("<br />");
+
+        // Loops applied to objects
+        // This also returns keys, so you can use the conventional syntax to 
+        // resolve each key to the matching value.
+        myObject = {firstName: "Mike", lastName: "Howell", city:"Leeds"};
+        for (key in myObject){
+            document.writeln(`key ${key} property=${myObject[key]} <br />`);
+        }
+    </script>
+</body>
+
+</html>
