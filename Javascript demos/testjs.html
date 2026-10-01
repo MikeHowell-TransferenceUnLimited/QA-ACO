@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Simple Test</title>
+        <!-- YOu will put script here. Initialisation script -->
+        <script>
+            function myFunction(){
+              let refMyText1 = document.getElementById("myText1");
+               refMyText1.innerText = "Donald Macdoogle";
+            }
+        </script>
+    </head>
+    <body>
+        <!-- <div id="myText1" onclick="myFunction()">firstname goes here</div> -->
+        <div id="myText1">firstname goes here</div>
+        <div id="myText2">firstname goes here</div>
+        <script>
+            //let myName = prompt("Enter your name");
+            let myName = "Jacob";
+            //alert ("Hello " + myName);
+            /* */
+            //alert (`Hello ${myName}`)
+            // Get a pointer to the div
+            let refMyText1 = document.getElementById("myText1");
+            refMyText1.innerText = "<b>Michael Howell</b>";
+
+            let refMyText2 = document.getElementById("myText2");
+            refMyText2.innerHTML = "<b>Michael Howell</b>"
+            console.log ("Hello " + myName);
+            document.writeln (`Hello ${myName}`);
+        </script>
+
+        <p>Other HTML</p>
+
+        <!-- You will put script here.  Here you put script that
+             will modify the content of the page, it accesses items
+             that must be rendered first. -->             
+             <script>
+                document.getElementById("myText1").
+                  addEventListener("click", myFunction);
+             </script>
+    </body>
+</html>
